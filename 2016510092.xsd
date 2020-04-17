@@ -1,0 +1,103 @@
+<schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<element name="departments">
+		<complexType>
+			<sequence>
+				<element name="university" maxOccurs="unbounded">
+					<complexType>
+						<sequence>
+							<element name="item">
+								<complexType>
+									<sequence>
+										<element name="name" type="xs:string">
+											<complexType>
+												<attribute name="lang" type="TypeLang">
+												</attribute>
+												<attribute name="second" type="TypeSecond">
+												</attribute>
+											</complexType>
+										</element>
+										<element name="period" type="xs:int">
+										</element>
+										<element name="quota" type="xs:int">
+											<complexType>
+												<attribute name="spec" type="TypeSpec">
+												</attribute>
+											</complexType>
+										</element>
+										<element name="field" type="TypeField">
+										</element>
+										<element name="last_min_score" type="TypeLastMin">
+											<complexType>
+												<attribute name="order" type="TypeOrder">
+												</attribute>
+											</complexType>
+										</element>
+										<element name="grant" type="TypeGrant">
+										</element>
+									</sequence>
+									<attribute name="faculty" type="xs:string">
+									</attribute>
+									<attribute name="id" type="Typeid ">
+									</attribute>
+								</complexType>
+							</element>
+						</sequence>
+						<attribute name="uType" type="uTYPE">
+						</attribute>
+						<attribute name="name" type="xs:string">
+						</attribute>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<simpleType name="Typeid">
+		<restriction base="xs:integer">
+			<pattern value="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" />
+		</restriction>
+	</simpleType>
+	<simpleType name="TypeLang">
+		<restriction base="xs:string">
+			<pattern value="tr|en" />
+		</restriction>
+	</simpleType>
+	<simpleType name="TypeSecond">
+		<restriction base="xs:string">
+			<enumeration value="" />
+			<enumeration value="İkinci Öğretim" />
+		</restriction>
+	</simpleType>
+	<simpleType name="TypeField">
+		<restriction base="xs:string">
+			<pattern value="SAY|EA|SÖZ|DİL" />
+		</restriction>
+	</simpleType>
+	<simpleType name="TypeLastMin">
+		<restriction base="xs:string">
+			<pattern value="\d*|\s{0}" />
+			<pattern value="[1-9][0-9][0-9],[0-9]*" />
+			<pattern value="-" />
+		</restriction>
+	</simpleType>
+	<simpleType name="TypeSpec">
+		<restriction base="xs:string">
+			<pattern value="\d*|\s{0}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="TypeOrder">
+		<restriction base="xs:string">
+			<pattern value="\d*|\s{0}" />
+		</restriction>
+	</simpleType>
+	<simpleType name="uTYPE">
+		<restriction base="xs:string">
+			<pattern value="Devlet|Vakıf" />
+		</restriction>
+	</simpleType>
+	<simpleType name="GrantType">
+		<restriction base="xs:string">
+			<enumeration value="\d*|\s{0}" />
+			<enumeration value="25|50|100" />
+		</restriction>
+	</simpleType>
+</schema>
